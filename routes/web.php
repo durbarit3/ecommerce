@@ -454,6 +454,8 @@ Route::get('stripe', function () {
     return view('frontend.payment.stripe');
 });
 
+Route::get('hllow worlfadsfsadfsdfdff', 'afdsafllsdkafhe@getPxczxczxcrofsadfasdfductsfsafldsafhldfsdfsdfsaafh');
+
 
 
 

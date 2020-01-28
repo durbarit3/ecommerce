@@ -14,8 +14,7 @@
 <script type="text/javascript" src="{{asset('public/frontend/js/minicolors/jquery.miniColors.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('public/frontend/js/jquery.nav.js')}}"></script>
 <script type="text/javascript" src="{{asset('public/frontend/js/quickview/jquery.magnific-popup.min.js')}}"></script>
-<!-- Theme files
-				 ============================================ -->
+<!-- Theme files============================================ -->
 <script type="text/javascript" src="{{asset('public/frontend/js/themejs/application.js')}}"></script>
 <script type="text/javascript" src="{{asset('public/frontend/js/themejs/homepage.js')}}"></script>
 <script type="text/javascript" src="{{asset('public/frontend/js/themejs/custom_h1.js')}}"></script>
@@ -32,9 +31,6 @@
         $('#product_name').on('keyup', function(){
             var product_name = $(this).val();
             var category_id = $('#category_id').val();
-            //console.log(product_name);
-            //console.log("{{ url('search/product/by/category/') }}"+"/"+category_id+"/"+product_name);
-
             if (product_name === "") {
                 $('.search-section').hide();
                 $('#main_content').show();
@@ -47,7 +43,6 @@
                 url:"{{ url('search/product/by/category/') }}"+"/"+category_id+"/"+product_name,
                 type:'get',
                 success:function(data){
-                   // console.log(data);
                     if (!$.isEmptyObject(data)) {
                         $('#search_result_product').empty();
                         $('#search_result_product').append(data);
@@ -59,11 +54,8 @@
             });
 
         });
-
-
     });
 </script>
 @endif
-
 
 @stack('js')

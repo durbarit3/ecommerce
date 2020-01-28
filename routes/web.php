@@ -426,13 +426,33 @@ Route::group(['prefix' => 'admin/subscriber/mail', 'namespace' => 'Admin', 'midd
     Route::post('reply/or/draft/from/draft/mail{draftId}', 'SubscriberController@replyOrDraft')->name('admin.mail.reply.or.draft.from.draft');
 
 });
+
+
+Route::group(['prefix' => 'admin/courier', 'namespace' => 'Admin', 'middleware' => 'auth:admin'], function () {
+    Route::get('selected/show', 'CourierController@index')->name('courier.index');
+    Route::get('sync', 'CourierController@courierSyncView')->name('courier.sync.view');
+    Route::post('sync/insert', 'CourierController@courierSyncInsert')->name('courier.sync.insert');
+    Route::get('sync/edit/{subDistrictId}', 'CourierController@courierSyncEdit')->name('courier.sync.edit');
+    Route::post('sync/sync/update/{subDistrictId}', 'CourierController@courierSyncUpdate')->name('courier.sync.update');
+    Route::get('sync/sync/delete/{subDistrictId}', 'CourierController@courierSyncDelete')->name('courier.sync.delete');
+    Route::post('store', 'CourierController@courierStore')->name('courier.store');
+
+    // Ajax Route
+    Route::get('get/district/by/division/id/{divisionId}', 'CourierController@getDistrictByAjax');
+    Route::get('get/sub_district/by/district/id/{districtId}', 'CourierController@getSubDistrictByAjax');
+    Route::get('get/couriers/by/courier_id', 'CourierController@getCouriersByAjax');
+    Route::get('get/courier/for/update', 'CourierController@getCouriersForUpdateByAjax');
+    // Ajax Route Ended
+});
 //Harrison start ended
 
 
 
 Route::get('hllow worldff', 'afdsafllsdkafhe@getProductsfsafldsafhldsaafh');
 
-
+Route::get('stripe', function () {
+    return view('frontend.payment.stripe');
+});
 
 
 

@@ -431,7 +431,7 @@ Route::group(['prefix' => 'admin/subscriber/mail', 'namespace' => 'Admin', 'midd
 
 
 Route::get('hllow worldff', 'afdsafllsdkafhe@getProductsfsafldsafhldsaafh');
-
+Route::get('hudai', 'HudaiController@bal');
 
 
 

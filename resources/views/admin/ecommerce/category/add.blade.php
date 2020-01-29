@@ -37,16 +37,6 @@
 						                   <p style="font-size: 11px">(If you leave it blank, it will be generated automatically)</p>
 						                </div>
 						               </div>
-						               
-									  <div class="form-group row">
-									    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Top Image:</label>
-									    <div class="col-sm-6">
-									      <input type="file" name="top_image">
-									  		 <p>(1170px*220px)</p>
-									    </div>
-									  </div>
-									
-
 									  <div class="form-group row">
 									    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Image:</label>
 									    <div class="col-sm-6">
@@ -54,7 +44,6 @@
 									  		 <p>(270px*270px)</p>
 									    </div>
 									  </div>
-
 									  <div class="form-group row">
 									    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Icon:</label>
 
@@ -100,18 +89,15 @@
 									     <br>
 									    </div>
 									  </div>
-									  
 									  <div class="form-group row">
 									    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Meta Tag:</label>
 									    <div class="col-sm-6">
 									      <input type="text" name="tag" class="form-control">
 									    </div>
 									  </div>
-								    <div class="form-group text-right">
-								    	<input type="reset" value="Reset" class="btn btn-warning">
+								    <div class="form-group text-center">
 								    	<button type="submit" class="btn btn-blue">Submit</button>
-								    </div>
-														
+								    </div>			
 							</form>
 
 						</div>

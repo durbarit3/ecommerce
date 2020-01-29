@@ -367,7 +367,8 @@
                                 <li><a href="{{route('admin.termscondition')}}">Terms & Condition</a></li>
                                 <li><a href="{{route('admin.faq.all')}}">Faq</a></li>
                                 <li><a href="{{route('admin.page.all')}}">Page</a></li>
-                                <li><a href="{{route('admin.banner.all')}}">Banner</a></li>
+                                <li><a href="{{route('admin.banner.all')}}">Slider</a></li>
+                                <li><a href="{{route('admin.sitebanner.all')}}">Site Banner </a></li>
                               </ul>
                         </li>
 

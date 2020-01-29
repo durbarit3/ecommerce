@@ -225,7 +225,7 @@
         </button>
       </div>
       <div class="modal-body">
-           <form class="form-horizontal" action="{{route('admin.category.update')}}" method="POST" enctype="multipart/form-data" >
+           <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data" >
 
           	@csrf
 			 <div class="form-group row">

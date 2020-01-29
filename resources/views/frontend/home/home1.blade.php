@@ -33,16 +33,16 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hmsd block block_2">
                         <div class="home1-banner-1 clearfix">
-                            <div class="item-1 col-lg-6 col-md-6 col-sm-6 banners">
+                            @php
+                                $bottomimage=App\Banner::where('is_deleted',0)->limit(2)->inRandomOrder()->get();
+                            @endphp
+                            @foreach($bottomimage as $key => $banbottom)
+                            <div class="item-{{++$key}} col-lg-6 col-md-6 col-sm-6 banners">
                                 <div>
-                                    <a title="Static Image" href="#"><img src="{{asset('public')}}/1222.png" alt="Static Image"></a>
+                                    <a title="Static Image" href="#"><img src="{{asset('public/uploads/banner/'.$banbottom->bottom_image)}}" alt="Bottom Image"></a>
                                 </div>
                             </div>
-                            <div class="item-2 col-lg-6 col-md-6 col-sm-6 banners">
-                                <div>
-                                    <a title="Static Image" href="#"><img src="{{asset('public')}}/1222.png" alt="Static Image"></a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -99,10 +99,6 @@
                                                             @endif
 
                                                             <button class="compare btn-button compareproduct" type="button"  id="compareproduct" value="{{$flasdetail->product->id }}"><i class="fa fa-exchange"></i></button>
-
-
-                                                            <button class="mywishlist btn-button" type="button" data-toggle="tooltip" title=""data-original-title=" to Wish List"><i class="fa fa-heart"></i></button>
-                                                            <button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('35');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
 
                                                             <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('35');" data-original-title="Add to Cart"> <span class="hidden">Add to Cart</span></button>
                                                         </div>
@@ -348,11 +344,45 @@
                                     </div>
                                     <div class="wap-listing-tabs products-list grid">
                                         <div class="item-cat-image banners">
+                                            @php
+                                                $maincate_id=$catename->id;
+                                                $newimage=App\SiteBanner::where('section',3)->limit(1)->get();
+                                               
+                                            @endphp
+                                            @if($newimage)
+                                                @foreach($newimage as $ban_image)
+                                                 @if (count(json_decode($ban_image->category_id)) > 0)
+                                                     @foreach (json_decode($ban_image->category_id) as $key => $caty)
+                                                        @if($caty == $maincate_id)
+                                                        <div>
+                                                            <a href="product.html" title="" target="_self">
+                                                                <img class="categories-loadimage" title="" alt="" src="{{asset('public/uploads/sitebanner/'.$ban_image->image)}}">
+                                                            </a>
+                                                        </div>
+                                                        @else
+                                                            <div>
+                                                                <a href="product.html" title="" target="_self">
+                                                                    <img class="categories-loadimage" title="" alt="" src="{{asset('public/frontend/')}}/image/catalog/demo/banners/home1/md-banner-1.jpg">
+                                                                </a>
+                                                             </div>
+                                                         @endif
+                                                     @endforeach
+                                                @else
+                                                <div>
+                                                    <a href="product.html" title="" target="_self">
+                                                        <img class="categories-loadimage" title="" alt="" src="{{asset('public/frontend/')}}/image/catalog/demo/banners/home1/md-banner-1.jpg">
+                                                    </a>
+                                                 </div>
+                                                @endif
+                                                @endforeach
+                                            @else
                                             <div>
-                                                <a href="product.html" title="" target="_self">
-                                                    <img class="categories-loadimage" title="" alt="" src="{{asset('public/frontend/')}}/image/catalog/demo/banners/home1/md-banner-1.jpg">
+                                                 <a href="product.html" title="" target="_self">
+                                                     <img class="categories-loadimage" title="" alt="" src="{{asset('public/frontend/')}}/image/catalog/demo/banners/home1/md-banner-1.jpg">
                                                 </a>
-                                            </div>
+                                             </div>
+                                            @endif
+
                                         </div>
                                         <div class="ltabs-items-container">
                                             <div class="ltabs-items ltabs-items-selected items-category-4" data-total="16">
@@ -739,11 +769,7 @@
                                             </div>
                                             <div class="wap-listing-tabs products-list grid">
                                                 <div class="item-cat-image banners">
-                                                    <div>
-                                                        <a href="product.html" title="" target="_self">
-                                                            <img class="categories-loadimage" title="" alt="" src="{{asset('public/frontend/')}}/image/catalog/demo/banners/home1/md-banner-2.jpg">
-                                                        </a>
-                                                    </div>
+                                                
                                                 </div>
                                                 <div class="ltabs-items-container">
                                                     <div class="ltabs-items ltabs-items-selected items-category-{{$catesection->id}}" data-total="16">

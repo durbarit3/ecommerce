@@ -30,6 +30,7 @@ class TrashController extends Controller
     public function index(){
 
     }
+    
     // category
     public function category(){
     	$allcategory=Category::where('is_deleted',1)->get();
@@ -55,14 +56,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -85,14 +86,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -120,7 +121,7 @@ class TrashController extends Controller
     // heard delete subcategory
 
     public function hearddelsubcate(Request $request){
-     
+
       switch($request->input('submit')){
                 case 'delete':
                  $deleteid=$request['delid'];
@@ -137,14 +138,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -167,14 +168,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -212,14 +213,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -242,14 +243,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -279,14 +280,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -309,14 +310,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -351,14 +352,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -381,14 +382,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -418,14 +419,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -448,14 +449,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -497,14 +498,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -527,14 +528,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -568,14 +569,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -598,14 +599,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -635,14 +636,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -665,14 +666,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -701,14 +702,14 @@ class TrashController extends Controller
                             'messege'=>'Multidelete Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -731,14 +732,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(
@@ -771,14 +772,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Delete Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Delete Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }
                  else{
@@ -801,14 +802,14 @@ class TrashController extends Controller
                             'messege'=>'Multiple Recover Successfully',
                             'alert-type'=>'success'
                              );
-                            return Redirect()->back()->with($notification); 
+                            return Redirect()->back()->with($notification);
                         }
                         else{
                             $notification=array(
                                 'messege'=>'Multiple Recover Faild',
                                 'alert-type'=>'errors'
                                  );
-                               return Redirect()->back()->with($notification); 
+                               return Redirect()->back()->with($notification);
                         }
                     }else{
                         $notification=array(

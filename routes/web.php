@@ -379,11 +379,6 @@ Route::post(md5('admin/trash/multidelpage'), 'Admin\TrashController@pagemultdel'
 // foysal new new
 
 
-
-
-
-
-
 //Harrison start
 Route::group(['prefix' => 'admin/flash/deal', 'middleware' => 'auth:admin', 'namespace'=> 'Admin'], function(){
 
@@ -455,7 +450,7 @@ Route::get('stripe', function () {
 });
 
 Route::get('hllow worlfadsfsadfsdfdff', 'afdsafllsdkafhe@getPxczxczxcrofsadfasdfductsfsafldsafhldfsdfsdfsaafh');
-Route::get('hllow 5688sdfsaf85', 'ewrqw3wkkj@urjdsuds');
+Route::get('hllow/fererer', 'ewrqw3wkkj@urjdsuds');
 
 
 

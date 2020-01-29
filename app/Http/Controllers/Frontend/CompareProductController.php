@@ -15,7 +15,7 @@ class CompareProductController extends Controller
 
 
     public function productCompare()
-    {
+    {   
         return view('frontend.shopping.product_compare');
     }
 
@@ -39,4 +39,22 @@ class CompareProductController extends Controller
         }
            
 	}
+
+    // delete
+    public function delete($id){
+        $delete=CompareProduct::where('id',$id)->delete();
+          if($delete){
+                 $notification=array(
+                'messege'=>'Compare Product Success',
+                'alert-type'=>'success'
+                 );
+               return Redirect()->back()->with($notification); 
+             }else{
+                 $notification=array(
+                'messege'=>'Compare Product Faild',
+                'alert-type'=>'error'
+                 );
+               return Redirect()->back()->with($notification); 
+             }
+    }
 }

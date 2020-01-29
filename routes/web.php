@@ -190,22 +190,32 @@ Route::post('admin/page/update', 'Admin\PageController@update')->name('admin.pag
 Route::post('admin/page/multisoftdelete', 'Admin\PageController@pagemultidel')->name('admin.page.multisoftdelete');
 Route::get('admin/page/recover/{id}','Admin\PageController@recover');
 Route::get('admin/page/hearddelete/{id}','Admin\PageController@hearddelete');
-// banner
+// slider
 Route::get(md5('admin/banner/all'),'Admin\BannerController@index')->name('admin.banner.all');
 Route::post(md5('admin/banner/insert'),'Admin\BannerController@insert')->name('admin.banner.insert');
-
 Route::get('admin/banner/active/{id}','Admin\BannerController@active');
 Route::get('admin/banner/restore/{id}','Admin\BannerController@restore');
 Route::get('admin/banner/deactive/{id}','Admin\BannerController@deactive');
 Route::get('admin/banner/softdelete/{id}','Admin\BannerController@softdelete');
-
 Route::get('admin/banner/multihearddelete/{id}','Admin\BannerController@multihearddelete');
-
 Route::post('admin/banner/multisoftdelete','Admin\BannerController@multisoftdelete')->name('admin.banner.multisoftdelete');
 Route::get('/get/admin/banner/edit/{ban_id}','Admin\BannerController@edit');
 Route::post('admin/banner/update','Admin\BannerController@update')->name('admin.banner.update');
 
+// site banner
+Route::get(md5('admin/sitebanner/all'),'Admin\SiteBannerController@sitebanner')->name('admin.sitebanner.all');
 
+Route::get('admin/sitebanner/deactive/{id}','Admin\BannerController@sitebannerdeactive');
+Route::get('admin/sitebanner/active/{id}','Admin\BannerController@sitebanneractive');
+Route::get('admin/sitebanner/softdelete/{id}','Admin\BannerController@sitebabnsoftdelete');
+Route::get('/get/admin/sitebanner/edit/{id}','Admin\BannerController@sitebabnsoftedit');
+Route::get('admin/sitebanner/restore/{id}','Admin\BannerController@sitebanrestore');
+Route::get('admin/sitebanner/hearddelete/{id}','Admin\BannerController@sitebahearddel');
+
+Route::post(md5('admin/sitebanner/insert'),'Admin\SiteBannerController@sitebannerinsert')->name('admin.sitebanner.insert');
+
+Route::post(md5('admin/sitebanner/update'),'Admin\BannerController@sitebannerupdate')->name('admin.sitebanner.update');
+Route::post(md5('admin/sitebanner/multisoftdelete'),'Admin\BannerController@sitebanmultisoft')->name('admin.sitebanner.multisoftdelete');
 
 
 
@@ -252,26 +262,18 @@ Route::get('product/page/{slug}', 'Frontend\FrontendController@cateproduct');
 Route::get('subacete/{cate_slug}/{subacet_slug}', 'Frontend\FrontendController@subcateproduct');
 // resubcate
 Route::get('resubacete/{cate_slug}/{subacet_slug}/{resub_slug}', 'Frontend\FrontendController@resubcateproduct');
-
 Route::get('/product/details/page/{id}', 'Frontend\FrontendController@productDetails')->name('product.details');
 
 
 
 
 // product add to cart in front end
-
 Route::get(md5('/product/cart/page'), 'Frontend\FrontendController@cart')->name('product.cart.add');
-
 Route::get(md5('/product/checkout/page'), 'Frontend\FrontendController@checkout')->name('product.checkout');
-
-
 Route::get('product/details/{id}', 'Frontend\FrontendController@productmodal');
 
-// Route::get(md5('/customer/login'), 'Frontend\FrontendController@customerLogin')->name('customer.login');
 
-// Route::get(md5('/customer/register'), 'Frontend\FrontendController@customerRegister')->name('customer.register');
 // wish list
-
 Route::get('/product/wishlist', 'Frontend\WishlistController@index')->name('product.wishlist');
 Route::get('/product/add/wishlist/{id}', 'Frontend\WishlistController@insert');
 Route::get('/wishlist/delete/{id}', 'Frontend\WishlistController@delete');
@@ -286,6 +288,7 @@ Route::get(md5('/customer/register'), 'Frontend\FrontendController@customerRegis
 
 Route::get('/product/compare/page', 'Frontend\CompareProductController@productCompare')->name('product.compare');
 Route::get('/product/compare/{com_id}', 'Frontend\CompareProductController@necompare');
+Route::get('product/compare/delete/{id}', 'Frontend\CompareProductController@delete');
 // wish list end
 
 

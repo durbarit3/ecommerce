@@ -29,21 +29,20 @@
                     </thead>
                     <tbody>
                         @php
-                            $userid =  \Request::getClientIp(true);
-                            $cartCollection = Cart::session($userid)->getContent();
+                            $userid =\Request::getClientIp(true);
+                            $cartCollection=App\CompareProduct::where('ip_address',$userid)->get();
                         @endphp
                      @foreach($cartCollection as $product)
-                        <tr>
-                            <td>{{Str::limit($product->name,40)}}</td>
+                         <tr>
+                            <td>{{Str::limit($product->product->product_name,40)}}</td>
                             <td>
-                            <img src="{{asset('public/uploads/products/thumbnail/'.$product->img)}}" height="55px">
+                            <img src="{{asset('public/uploads/products/thumbnail/'.$product->product->thumbnail_img)}}" height="55px">
                             </td>
-                            <td>{{$product->price}}</td>
-                            <td></td>
-                            <td>in Stock</td>
+                            <td>{{$product->product->product_price}}</td>
+                            <td>in Stock({{$product->product->product_qty}})</td>
                             <td>
                             <input type="button" value="Add to Cart" class="btn btn-primary btn-block" onclick="cart.add('30', '1');" />
-                            <a href="#" class="btn btn-danger btn-block">Remove</a>
+                            <a href="{{url('product/compare/delete/'.$product->id)}}" class="btn btn-danger btn-block">Remove</a>
                             </td>
                         </tr>
                     @endforeach

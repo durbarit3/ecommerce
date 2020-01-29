@@ -694,7 +694,7 @@
                                 <a class="reviews_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a> / <a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
                             </div>
                             <div class="product_page_price price" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                                <span class="price-new"><span id="chosen_price""> ‎৳ {{$productdetails->product_price}}</span></span>
+                                <span class="price-new"><span id="chosen_price"> ‎৳ {{$productdetails->product_price}}</span></span>
                                 
                                 
                                 <span class="price-old" id="price-old">‎৳ {{$productdetails->product_price}}</span>

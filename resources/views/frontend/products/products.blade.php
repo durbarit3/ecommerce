@@ -357,7 +357,7 @@
             <div class="module banner-left hidden-xs ">
                 <div class="static-image-home-left banners">
                     <div>
-                        <a title="Static Image" href="#"><img src="{{asset('public/uploads/category/'.$category->side_image)}}" alt="Static Image"></a>
+                        <a title="Static Image" href="#"><img src=""></a>
                     </div>
                 </div>
             </div>
@@ -366,9 +366,24 @@
         <div id="content" class="col-md-9 col-sm-12 col-xs-12">
             <div class="module banners-effect-9 form-group">
                 <div class="banners">
-                    <div>
-                        <a href="#"><img src="{{asset('public/uploads/category/'.$category->top_image)}}"></a>
-                    </div>
+                    @php
+                        $maincate_id=$category->id;
+                        $ban_image=App\SiteBanner::where('section',2)->first();
+                       
+                    @endphp
+                     @if (count(json_decode($ban_image->category_id)) > 0)
+                         @foreach (json_decode($ban_image->category_id) as $key => $caty)
+                            @if($caty == $maincate_id)
+                            <div>
+                                <a href=""><img src="{{asset('public/uploads/sitebanner/'.$ban_image->image)}}"></a>
+                            </div>
+                            @else
+                                    
+                            @endif
+                        @endforeach
+                    @else
+
+                    @endif
                 </div>
             </div>
             <a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i class="fa fa-bars"></i>Sidebar</a>

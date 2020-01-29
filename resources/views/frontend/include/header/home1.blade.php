@@ -48,7 +48,7 @@
 						@php
 							$userid = Request::ip();
 						@endphp
-							<button onclick="myAddToCartData(this)" value="{{$userid}}" data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
+							<a onclick="myAddToCartData()" data-id="{{$userid}}" id="cartdataid" data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
 								<div class="shopcart">
 									<span class="handle pull-left"></span>
 									<div class="cart-info">
@@ -58,28 +58,16 @@
 
 
 											@php
-											$items =0;
-											$price =0;
-											$userid = Request::ip();
-
-											foreach(Cart::session($userid)->getContent() as $item){
-												$items += $item->quantity;
-												$price += $item->price * $items;
-											}
+												$userid =  \Request::getClientIp(true);
 											@endphp
 											
-											<span class="items_cart" id="cartdatacount">{{$items }}
-										
-
-											<span class="items_cart">{{Cart::session($userid)->getContent()->count()}}
-
-										</span>
+											<span class="items_cart" id="cartdatacount">{{Cart::session($userid)->getTotalQuantity() }}</span>
 											<span class="items_cart2">item(s)</span>
-											<span class="items_carts" id="product_price"> - $ {{$price}}</span>
+											<span class="items_carts" id="product_price"> - {{Cart::session($userid)->getTotal()}}</span>
 										</span>
 									</div>
 								</div>
-							</button>
+							</a>
 
 							<ul class="dropdown-menu pull-right shoppingcart-box">
 								<li class="content-item" id="addtocartshow">
@@ -92,7 +80,7 @@
 								<li>
 									<div class="checkout clearfix">
 										<a href="{{route('product.cart.add')}}" class="btn btn-view-cart inverse"> View Cart</a>
-										<a href="checkout.html" class="btn btn-checkout pull-right">Checkout</a>
+										<a href="{{route('checkout.page.show')}}" class="btn btn-checkout pull-right">Checkout</a>
 									</div>
                                 </li>
 							</ul>
@@ -177,9 +165,10 @@
 <!-- //Header Container  -->
 
 <script>
-    function myAddToCartData(el) {
-
-        $.post('{{ route('add.cart.show') }}', {_token: '{{ csrf_token() }}',user_id: el.value},
+    function myAddToCartData() {
+		var userip =$("#cartdataid").data("id");
+		
+        $.post('{{ route('add.cart.show') }}', {_token: '{{ csrf_token() }}',user_id: userip},
             function(data) {
 			   $('#addtocartshow').html(data);
 			console.log(data);

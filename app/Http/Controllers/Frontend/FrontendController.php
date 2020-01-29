@@ -21,7 +21,6 @@ class FrontendController extends Controller
 
     public function index ()
     {
-
         foreach(ThemeSelector::where('status',1)->get() as $themeselector){
 
             $to = Carbon::now()->format('Y-m-d');
@@ -40,8 +39,6 @@ class FrontendController extends Controller
 
     public function aboutus()
     {
-       
-
         return view('frontend.aboutus.aboutus1');
     }
 
@@ -62,7 +59,7 @@ class FrontendController extends Controller
     }
     // resubcate product
      public function resubcateproduct($cate_slug,$subcate_slug,$resub_slug){
-
+         
         $resubcate=ReSubCategory::where('resubcate_slug',$resub_slug)->first();
         return view('frontend.products.resubcategory',compact('resubcate'));
     }
@@ -74,15 +71,9 @@ class FrontendController extends Controller
         return view('frontend.products.product_details',compact('productdetails'));
 
     }
-
-
-    // Product Checkout page show
-    public function checkout()
-    {
-        return view('frontend.shopping.checkout');
-    }
+    
     // Product compare page show
-
+    
     // Product wishlist page show
 
     public function productWishlist()
@@ -187,11 +178,11 @@ class FrontendController extends Controller
 
             // return json_encode($productsearch);
             return view('frontend.products.search',compact('productsearch'));
-
+           
     }
 
-
-
+     
+     
 
 
 

@@ -142,11 +142,11 @@
 
     function getProduct() {
         var productId = $('#product_id').val();
-        //console.log(productId);
+        console.log(productId);
 
            //console.log(productId);
             var flash_deal_id = $('#flash_deal_id').val();
-           // console.log(flash_deal_id);
+            console.log(flash_deal_id);
            if (productId == null) {
                 $('.selected-products-table').hide();
            }else{

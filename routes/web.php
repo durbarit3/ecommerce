@@ -46,6 +46,7 @@ Route::post('admin/mollie/gateway', 'Admin\GatewayController@MollieUpdate')->nam
 
 
 // category
+Route::get(md5('admin/category/add'), 'Admin\CategoryController@add')->name('admin.category.add');
 Route::get(md5('admin/category/all'), 'Admin\CategoryController@index')->name('admin.category.all');
 Route::post(md5('admin/category/insert'), 'Admin\CategoryController@insert')->name('admin.category.insert');
 Route::get('/get/category/edit/{cate_id}', 'Admin\CategoryController@edit');
@@ -303,13 +304,6 @@ Route::get('/product/detailssearch/', 'Frontend\FrontendController@searchcate')-
 
 // Route Created By Harrison
 
-Route::get('search/product/by/category/{categoryId}/{productName}', 'Frontend\SearchController@searchProductByAjax');
-Route::get('search/product/by/main/category/{categoryId}/{productName}', 'Frontend\SearchController@searchProductByMainCatByAjax');
-Route::get('search/product/by/sub/category/{categoryId}/{productName}', 'Frontend\SearchController@searchProductBySubCatByAjax');
-Route::get('search/product/by/re_sub/category/{categoryId}/{productName}', 'Frontend\SearchController@searchProductByResubCatByAjax');
-
-// Route Created By Harrison Ended
-
 
 Route::get('admin/product/varient', 'Frontend\FrontendController@provarient')->name('products.variant_price');
 
@@ -353,7 +347,10 @@ Route::get('admin/product/modal/show', 'Admin\ThemeOptionController@productModal
 
 // add to cart area start
 
-Route::post('add/to/cart', 'Frontend\AddToCartController@addToCart')->name('product.add.cart');
+Route::get('add/to/cart', 'Frontend\AddToCartController@addToCart')->name('product.add.cart');
+Route::get('get/cart/data', 'Frontend\AddToCartController@getCartData')->name('get.cart.data');
+
+
 Route::post('add/to/cart/show', 'Frontend\AddToCartController@addToCartShow')->name('add.cart.show');
 Route::post('add/to/cart/delete', 'Frontend\AddToCartController@addToCartDelete')->name('add.cart.delete');
 
@@ -362,6 +359,38 @@ Route::post('add/to/cart/delete', 'Frontend\AddToCartController@addToCartDelete'
 Route::get(md5('/product/cart/page'), 'Frontend\AddToCartController@productViewCart')->name('product.cart.add');
 Route::post('/product/cart/update', 'Frontend\AddToCartController@viewCartUpdate')->name('product.cart.update');
 Route::post('/product/cart/delete', 'Frontend\AddToCartController@viewCartDelete')->name('product.cart.delete');
+
+
+// checkout route start here
+Route::get(md5('/checkout/page/show'), 'Frontend\CheckoutController@checkoutshow')->name('checkout.page.show');
+Route::get(md5('/checkout/customer/login'), 'Frontend\CheckoutController@CustomerLogin')->name('checkout.login.show');
+Route::post(md5('/checkout/customer/login'), 'Frontend\CheckoutController@authenticate')->name('checkout.login');
+Route::get(md5('/checkout/order/data'), 'Frontend\CheckoutController@orderData')->name('get.order.data');
+Route::post(md5('/order/data/update'), 'Frontend\CheckoutController@orderDataUpdate')->name('product.order.update');
+Route::post(md5('/order/data/delete'), 'Frontend\CheckoutController@orderDataDelete')->name('product.order.delete');
+
+
+// cart all product show
+
+
+Route::post('add/to/cart/show', 'Frontend\AddToCartController@addToCartShow')->name('add.cart.show');
+Route::post('cart/data/delete', 'Frontend\AddToCartController@cartDataDelete')->name('cart.data.delete');
+Route::post('add/to/cart/delete', 'Frontend\AddToCartController@addToCartDelete')->name('add.cart.delete');
+
+Route::get('addtocart/test/', 'Frontend\AddToCartController@adtest')->name('addtest.cart');
+
+// used cupon area start
+
+Route::post('customer/used/cupon', 'Frontend\CheckoutController@usedCupon')->name('customer.used.cupon');
+
+Route::post('customer/apply/cupon', 'Frontend\CheckoutController@applyCupon')->name('customer.apply.cupon');
+
+// place order area start
+
+Route::post('place/order/submit', 'Frontend\CheckoutController@orderSubmit')->name('place.order.submit');
+Route::get('/user/division/name/{id}', 'Frontend\CheckoutController@userCountrySubmit');
+Route::get('/user/district/name/{id}', 'Frontend\CheckoutController@userDivisionSubmit');
+Route::get('/user/upazila/name/{id}', 'Frontend\CheckoutController@userUpazilaSubmit');
 
 
 
@@ -426,35 +455,13 @@ Route::group(['prefix' => 'admin/subscriber/mail', 'namespace' => 'Admin', 'midd
     Route::post('reply/or/draft/from/draft/mail{draftId}', 'SubscriberController@replyOrDraft')->name('admin.mail.reply.or.draft.from.draft');
 
 });
-
-
-Route::group(['prefix' => 'admin/courier', 'namespace' => 'Admin', 'middleware' => 'auth:admin'], function () {
-    Route::get('selected/show', 'CourierController@index')->name('courier.index');
-    Route::get('sync', 'CourierController@courierSyncView')->name('courier.sync.view');
-    Route::post('sync/insert', 'CourierController@courierSyncInsert')->name('courier.sync.insert');
-    Route::get('sync/edit/{subDistrictId}', 'CourierController@courierSyncEdit')->name('courier.sync.edit');
-    Route::post('sync/sync/update/{subDistrictId}', 'CourierController@courierSyncUpdate')->name('courier.sync.update');
-    Route::get('sync/sync/delete/{subDistrictId}', 'CourierController@courierSyncDelete')->name('courier.sync.delete');
-    Route::post('store', 'CourierController@courierStore')->name('courier.store');
-
-    // Ajax Route
-    Route::get('get/district/by/division/id/{divisionId}', 'CourierController@getDistrictByAjax');
-    Route::get('get/sub_district/by/district/id/{districtId}', 'CourierController@getSubDistrictByAjax');
-    Route::get('get/couriers/by/courier_id', 'CourierController@getCouriersByAjax');
-    Route::get('get/courier/for/update', 'CourierController@getCouriersForUpdateByAjax');
-    // Ajax Route Ended
-});
 //Harrison start ended
 
 
 
 Route::get('hllow worldff', 'afdsafllsdkafhe@getProductsfsafldsafhldsaafh');
 
-Route::get('stripe', function () {
-    return view('frontend.payment.stripe');
-});
 
-Route::get('hllow worlfadsfsadfsdfdff', 'afdsafllsdkafhe@getPxczxczxcrofsadfasdfductsfsafldsafhldfsdfsdfsaafh');
 
 
 

@@ -34,3 +34,5 @@
         color:crimson;
     }
 </style>
+@stack('css')
+

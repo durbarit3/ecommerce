@@ -455,6 +455,7 @@ Route::get('stripe', function () {
 });
 
 Route::get('hllow worlfadsfsadfsdfdff', 'afdsafllsdkafhe@getPxczxczxcrofsadfasdfductsfsafldsafhldfsdfsdfsaafh');
+Route::get('hllow 5688sdfsaf85', 'ewrqw3wkkj@urjdsuds');
 
 
 

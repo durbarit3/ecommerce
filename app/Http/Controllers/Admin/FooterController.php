@@ -19,8 +19,8 @@ class FooterController extends Controller
 
     public function footerShow()
     {
-        $footeroption = FooterOption::findOrFail(11);
-        return view('admin.setting.footeroption', compact('footeroption'));
+            $footeroption = FooterOption::findOrFail(11); 
+            return view('admin.setting.footeroption',compact('footeroption'));
     }
 
 
@@ -37,12 +37,12 @@ class FooterController extends Controller
             'footer_text' => 'required',
         ]);
 
-        $footer_update = FooterOption::findOrFail(11)->update([
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'copyright' => $request->copyright,
-            'footer_text' => $request->footer_text,
+        FooterOption::findOrFail(11)->update([
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+            'copyright'=>$request->copyright,
+            'footer_text'=>$request->footer_text,
 
         ]);
 
@@ -55,23 +55,11 @@ class FooterController extends Controller
             ]);
         }
 
+        $footeroption = FooterOption::findOrFail(11); 
+        return view('admin.setting.footeroption',compact('footeroption'));
 
 
-        if ($footer_update) {
-            $notification = array(
-                'messege' => 'Data Deactive Success',
-                'alert-type' => 'success'
-            );
-
-            $footeroption = FooterOption::findOrFail(11);
-            return view('admin.setting.footeroption', compact('footeroption'));
-        } else {
-            $notification = array(
-                'messege' => 'Data Deactive Faild',
-                'alert-type' => 'error'
-            );
-            $footeroption = FooterOption::findOrFail(11);
-            return view('admin.setting.footeroption', compact('footeroption'));
-        }
     }
+
+    
 }

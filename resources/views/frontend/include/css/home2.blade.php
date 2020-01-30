@@ -8,7 +8,8 @@
 <link href="{{asset('public/frontend/js/minicolors/miniColors.css')}}" rel="stylesheet">
 <link href="{{asset('public/frontend/js/slick-slider/slick.css')}}" rel="stylesheet">
 <link href="{{asset('public/frontend/css/themecss/so_onepagecheckout.css')}}" rel="stylesheet">
-<!-- Theme CSS============================================ -->
+<!-- Theme CSS
+                 ============================================ -->
 
 <link href="{{asset('public/frontend/css/themecss/so_searchpro.css')}}" rel="stylesheet">
 <link href="{{asset('public/frontend/css/themecss/so_megamenu.css')}}" rel="stylesheet">
@@ -34,4 +35,3 @@
         color:crimson;
     }
 </style>
-@stack('css')

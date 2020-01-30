@@ -39,8 +39,9 @@
 												</label>
 		                                      </th>
 		                                      <th>#</th>
-		                                      <th>Banner Link</th>
-		                                      <th>Banner Image</th>
+		                                      <th>Slider Link</th>
+		                                      <th>Slider Image</th>
+		                                      <th>Banner Bottom Image</th>
 		                                      <th>Status</th>
 		                                      <th>manage</th>
 		                                  </tr>
@@ -60,6 +61,9 @@
 
 		                                      <td>
 		                                      	<img src="{{asset('public/uploads/banner/'.$data->ban_image)}}" height="45px;">
+		                                      </td>
+		                                       <td>
+		                                      	<img src="{{asset('public/uploads/banner/'.$data->bottom_image)}}" height="45px;">
 		                                      </td>
 		                                      <td>
 		                                      	@if($data->ban_status==1)
@@ -108,17 +112,25 @@
 
           	@csrf
 			 <div class="form-group row">
-			    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Ban Link</label>
+			    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Slider Link</label>
 			    <div class="col-sm-8">
 			      <input type="text" class="form-control" name="ban_link" required>
 			    </div>
 			  </div>
 			  <div class="form-group row">
-			    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Image</label>
+			    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Slider Image</label>
 
 			    <div class="col-sm-8">
 			      <input type="file" name="pic" required>
 			      <p>(830px*355px)</p>
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Slider Bottom Image</label>
+
+			    <div class="col-sm-8">
+			      <input type="file" name="bottom_image">
+			      <p>(435px*175px)</p>
 			    </div>
 			  </div>
 			

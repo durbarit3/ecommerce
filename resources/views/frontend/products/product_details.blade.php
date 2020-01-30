@@ -1,23 +1,15 @@
 @extends('layouts.websiteapp')
 @section('main_content')
+<style>
+    #product .radio-type-button .option-content-box :hover {
+    background: #ff5e00;
+    border-color: #ff5e00;
+    color: white;
+    padding: 5px;
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Main Container  -->
-
-<div class="search-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="search-content">
-                    <div class="row" id="search_result_product">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="main_content">
 <div class="breadcrumbs">
     <div class="container">
         <div class="title-breadcrumb">
@@ -702,8 +694,10 @@
                                 <a class="reviews_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a> / <a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
                             </div>
                             <div class="product_page_price price" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                                <span class="price-new"><span id="price-special"> ‎৳ {{$productdetails->product_price}}</span></span>
-                                <span class="price-old" id="price-old">$122.00</span>
+                                <span class="price-new"><span id="chosen_price"> ‎৳ {{$productdetails->product_price}}</span></span>
+                                
+                                
+                                <span class="price-old" id="price-old">‎৳ {{$productdetails->product_price}}</span>
                                 <!--    <div class="price-tax"><span>Ex Tax:</span> $70.00</div> -->
                             </div>
                             <div class="product-box-desc">
@@ -720,56 +714,73 @@
                                     @if($productdetails->product_type==1)
                                     <!--variation start-->
 
-                                    <div class="stock row">
-                                        <div class="col-md-3">
+
+
+
+
+
+
+                                    
+                                        <div class="col-md-12">
+                                        <div id="product">
+                                        <div class="form-group required " style="display: block; margin-left:17px">
                                             <span>Color:</span>
                                             <input type="hidden" name="id" value="{{$productdetails->id}}">
                                             @if (count(json_decode($productdetails->colors)) > 0)
                                             @foreach (json_decode($productdetails->colors) as $key => $color)
-                                            <div class="radio radio-type-button">
-                                                <label>
-                                                    <input type="radio" id="{{ $productdetails->id }}-color-{{ $key }}" name="color" value="{{ $color }}" @if($key==0) checked @endif>
-                                                    <span class="option-content-box active" data-title="" data-toggle="tooltip" data-original-title="" title="" style="background:{{ $color }};">
-                                                        <span style="background:{{ $color }};"></span>
-                                                    </span>
-                                                    <script>
+                                           
 
-                                                            if (document.getElementById("{{ $productdetails->id }}-color-{{ $key }}").checked) {
-                                                                var colorname = document.getElementById('{{ $productdetails->id }}-color-{{ $key }}');
-                                                            }
-                                                        </script>
-                                                </label>
+
+                                            <div class="radio  radio-type-button">
+												<label>
+													<input type="radio" id="{{ $productdetails->id }}-color-{{ $key }}" name="color" value="{{ $color }}" @if($key==0) checked @endif>
+													<span class="option-content-box active" data-title="M +$12.00" data-toggle="tooltip" data-original-title="" title="" style="background:{{ $color }};">
+														<span class="option-name"> </span>
+													</span>
+												</label>
                                             </div>
+
+
                                             @endforeach
                                             @endif
                                         </div>
+                                        </div>
 
                                         @foreach (json_decode($productdetails->choice_options) as $key => $choice)
-                                        <div class="col-md-3">
-                                            <div class="stock">
-                                                <span>{{ $choice->title }}:</span>
-                                                @foreach ($choice->options as $key => $option)
-                                                <div class="radio radio-type-button">
-                                                    <label>
-                                                        <input id="{{ $choice->name }}-{{ $option }}" type="radio" name="{{ $choice->name }}" value="{{ $option }}" @if($key==0) checked @endif>
-                                                        <label for="{{ $choice->name }}-{{ $option }}">{{ $option }}</label>
+                                        
+                                        <div class="col-md-12">
+                                        <div id="product">
+                                    
+                                        
 
-                                                        <script>
+                                        
+									<div class="form-group required " style="display: block;">
+										<label class="control-label">{{ $choice->title }}:</label>
+										<div id="input-option224">
 
-                                                            if (document.getElementById("{{ $choice->name }}-{{ $option }}").checked) {
-                                                                var sizename = document.getElementById('{{ $choice->name }}-{{ $option }}');
-                                                            }
-                                                        </script>
-
-                                                    </label>
-                                                </div>
-                                                @endforeach
-
+                                        @foreach ($choice->options as $key => $option)
+											<div class="radio  radio-type-button">
+												<label>
+													<input type="radio" id="{{ $choice->name }}-{{ $option }}" name="{{ $choice->name }}" value="{{ $option }}" @if($key==0) checked @endif>
+													<span class="option-content-box active" data-title="M +$12.00" data-toggle="tooltip" data-original-title="" title="" style="background: none;">
+														<span class="option-name">{{ $option }} </span>
+													</span>
+												</label>
                                             </div>
+                                            
+                                        @endforeach
+											
+										</div>
+									</div>
+								
+                                </div>
+                                
+
+
                                         </div>
                                         @endforeach
                                     </div>
-
+                                    
                                     <!-- variation end -->
                                     @else
 
@@ -777,6 +788,24 @@
 
                                 </div>
                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                             <div class="short_description form-group">
                                 <h3>OverView</h3>
@@ -787,23 +816,23 @@
                                         <div class="option quantity">
                                             <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
                                                 <input class="form-control" type="number" id="quantity" name="quantity" value="1">
-                                                <input type="hidden" name="product_id" value="108">
+                                                <input type="hidden" name="product_id" value="{{$productdetails->id}}">
                                                 <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
                                                 <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
                                             </div>
                                         </div>
                                         <div class="cart">
                                         <div class="product_page_price price" id="chosen_price_div">
-                                            Final Price:<strong id="chosen_price">{{$productdetails->product_price}}</strong>
+                                            <input type="hidden" id="product_chosen_price" value="{{$productdetails->product_price}}" name="product_price">
+                                            <input type="button" id="addtocart" value="Add to Cart" class="addToCart btn btn-mega btn-lg " data-toggle="tooltip" title="" onclick="cart.add('30');" data-original-title="Add to cart" id="addtocart">
                                         </div>
 
 
+                                  
 
 
 
 
-
-                                            <button type="button" id="addtocart" value="{{$productdetails->id }}" class="addToCart btn btn-mega btn-lg " data-toggle="tooltip" title="" onclick="cart.add('30');" data-original-title="Add to cart" id="addtocart">Add to Cart</button>
 
 
                                         </div>
@@ -822,13 +851,13 @@
                                 </div>
                             </div>
 
-
+                           
 
 
                         </div>
                     </div>
                 </div>
-
+        
 </form>
 
 
@@ -968,7 +997,7 @@
                                                 </div>
                                                 <div class="button-group">
                                                     <div class="button-inner so-quickview">
-                                                    <a  class="quickview iframe-link visible-lg btn-button" data-toggle="tooltip" title="" data-fancybox-type="iframe" href="{{ url('admin/product/modal/show/') }}" data-original-title="Quickview "> <i class="fa fa-search"></i> </a>
+                                                        <a class="quickview iframe-link visible-lg btn-button" data-toggle="tooltip" title="" data-fancybox-type="iframe" href="quickview.html" data-original-title="Quickview "> <i class="fa fa-search"></i> </a>
                                                         <button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('78');" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
                                                         <button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('78');" data-original-title="Compare this Product"><i class="fa fa-retweet"></i></button>
                                                         <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('78', '2');" data-original-title="Add to Cart"><span class="hidden">Add to Cart </span></button>
@@ -1128,7 +1157,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <!-- //Main Container -->
 <script>
     $(document).ready(function() {
@@ -1149,7 +1178,9 @@
 
                     //console.log(data.price);
                     // $('#option-choice-form #chosen_price_div').removeClass('d-none');
-                    $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
+                    // $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
+                    $('#chosen_price').html('৳ ' +data.price);
+                    $('#product_chosen_price').val(data.price);
                     // $('#available-quantity').html(data.quantity);
                 }
             });
@@ -1161,55 +1192,29 @@
 
 <!-- add to cart area start -->
 
+ 
+
 
 <script>
-$(document).ready(function(){
-	$('#addtocart').click(function(params) {
 
-    var addtocart_id = $(this).val();
-    if(productcolorname){
-        var productcolorname =colorname.value;
-    }else{
-        var productcolorname =0;
-    }
+$(document).ready(function() {
+$('#addtocart').on('click', function(){
 
-    if(productsizename){
-        var productsizename =sizename.value;
-    }else{
-        var productsizename =0;
-    }
-
-
-
-
-    var price =document.getElementById('chosen_price').innerHTML;
-
-	$.ajaxSetup({
-		headers: {
-			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		}
-	});
 
 $.ajax({
-	type:'POST',
-	url:'{{ route('product.add.cart') }}',
-	data: {addtocart_id: addtocart_id,price:price,productcolorname:productcolorname,productsizename:productsizename},
-	success: function (data) {
-        console.log(data);
+type:'GET',
+url:"{{ route('product.add.cart') }}",
+data: $('#option-choice-form').serializeArray(),
+success: function (data) {
+    console.log(data);
+    document.getElementById('cartdatacount').innerHTML =data.quantity;
+    document.getElementById('product_price').innerHTML =data.total;
+
+}
+});
 
 
-        document.getElementById('cartdatacount').innerHTML =data.quantity;
-        document.getElementById('product_price').innerHTML =data.price;
-
-
-
-
-
-
-
-		}
-	});
-	});
+});
 });
 </script>
 

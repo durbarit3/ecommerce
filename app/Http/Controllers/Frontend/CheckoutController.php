@@ -104,7 +104,7 @@ class CheckoutController extends Controller
                                 'value' => '-'.$cupondiscountspers,
                             ));
                         }
-
+                        Cart::session($userid)->condition($condition);
                         UserUsedCupon::insert([
                             'user_ip' => Auth::user()->id,
                             'cupon_id' => $cuponuser->id,
@@ -112,9 +112,12 @@ class CheckoutController extends Controller
                             'created_at' => Carbon::now(),
                         ]);
                         
-                        Cart::session($userid)->condition($condition);
                         
-                        return "Cupon Insert Successfully";
+                        
+                        return response()->json([
+                            'cuponid'=>$cuponuser->id,
+                            'cuponalert'=>'Cupon Insert Fuccessfully',
+                        ]);
                         
                     } else {
                         return "Your minimum purchese is less than minimum shopping criteria";
@@ -142,6 +145,7 @@ class CheckoutController extends Controller
                                         'target' => 'total',
                                         'value' => -$cupondiscounts,
                                     ));
+                                    Cart::session($userid)->condition($condition);
                                 }else{
                                     
                                     if( $cartdata->attributes->has('variation') )
@@ -159,10 +163,16 @@ class CheckoutController extends Controller
                                     'created_at' => Carbon::now(),
                                 ]); 
                                 
-                                return redirect()->route('get.order.data');
-                            } 
+                                
+                                    
+                            }
                         }
                     }
+
+
+                    
+
+
                 }
             } else {
                 return "You are alrady used this cupon";
@@ -288,8 +298,6 @@ class CheckoutController extends Controller
         $userid =  \Request::getClientIp(true);
 
         $usercartdatas = Cart::session($userid)->getContent();
-
-
         return view('frontend.shopping.orderajaxdata', compact('usercartdatas'));
     }
 
